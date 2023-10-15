@@ -20,11 +20,10 @@ namespace BT5_63131330.Controllers
         [HttpPost]
         public ActionResult ChangeBanner(HttpPostedFileBase banner)
         {
-            string postedFileName =
-           System.IO.Path.GetFileName(banner.FileName);
+            string postedFileName = System.IO.Path.GetFileName(banner.FileName);
             var path = Server.MapPath("/Images/" + postedFileName);
             banner.SaveAs(path);
-            string fSave = Server.MapPath("/banner.txt");
+            string fSave = Server.MapPath("/banner.txt");   
             System.IO.File.WriteAllText(fSave, postedFileName);
             return View();
         }

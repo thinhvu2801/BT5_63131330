@@ -1,21 +1,82 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "ChangeBanner";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>ChangeBanner</h2>
-@using (Html.BeginForm("ChangeBanner", "Change_Banner_63132835",
-FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <p>
-        <h3> <b>THAY ĐỔI BANNER</b></h3>
-    </p>
-    <hr />
-    <p>
-        Chọn ảnh làm banner: &nbsp;<input type="file"
-                                          style="height:30px;" name="banner" accept="image/*" required />
-        <input type="submit" style="height:30px;" value="Thay
-đổi" /><br>
-    </p>
-}
+<style>
+    .change-banner-button input[type="submit"] {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .change-banner-button input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    .change-banner-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .change-banner-field {
+        margin-bottom: 20px;
+    }
+
+    .banner-label {
+        font-weight: bold;
+    }
+
+    .change-banner-button {
+        margin-top: 20px;
+    }
+
+    .back-to-homepage {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+        .back-to-homepage button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+            .back-to-homepage button:hover {
+                background-color: #0056b3;
+            }
+</style>
+
+<div class="change-banner-container">
+    <h2>Thay Đổi Banner</h2>
+    @using (Html.BeginForm("ChangeBanner", "ChangeBanner_63131330",
+        FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="change-banner-field">
+            <label for="banner" class="banner-label">Chọn ảnh làm banner:</label>
+            <input type="file" name="banner" id="banner" accept="image/*" required />
+        </div>
+        <div class="change-banner-button">
+            <input type="submit" value="Thay đổi" />
+        </div>
+    }
+</div>
+
+<div class="back-to-homepage">
+    <form action="/Home/Default" method="get">
+        <button type="submit">Quay lại Homepage</button>
+    </form>
+</div>

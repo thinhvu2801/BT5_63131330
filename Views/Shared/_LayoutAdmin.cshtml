@@ -1,0 +1,83 @@
+﻿@{
+    var path = Server.MapPath("/banner.txt");
+    var fileImage = System.IO.File.ReadAllText(path);
+    ViewBag.image = "/Images/" + fileImage;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="~/Content/StyleAdmin.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #banner img {
+            max-width: 100%; 
+            height: auto; 
+            display: block;
+            margin: 0 auto; 
+            max-height: 100px;
+        }
+
+        #menu {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+            #menu a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 10px;
+                font-size: 16px;
+                transition: color 0.3s;
+            }
+
+                #menu a:hover {
+                    color: #ff6f61;
+                }
+
+        #content {
+            padding: 20px;
+        }
+
+        #footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="banner"><img src="@ViewBag.image" /></div>
+    <div id="menu">
+        <div>
+            @Html.ActionLink("TRANG CHỦ", "../Home/Default", "ChangeBanner_63131330", htmlAttributes: new { @class = "a" }) &nbsp;|&nbsp;
+            @Html.ActionLink("ĐĂNG KÝ", "../NVien_63131330/Index", "NhanVien_63131330", new { @class = "a" })&nbsp;|&nbsp;
+            @Html.ActionLink("GỬI EMAIL", "../GuiMail_63131330/Index", "GuiMail_63131330", new { @class = "a" }) &nbsp;|&nbsp;
+            @Html.ActionLink("THAY ĐỔI BANNER", "../ChangeBanner_63131330/ChangeBanner", "ChangeBanner_63131330", new { @class = "a" })
+        </div>
+    </div>
+    <div id="content">
+        @RenderBody()
+    </div>
+    <div id="footer">
+        Copyright &copy; @DateTime.Now.Year 
+        <a href="https://www.facebook.com/t2801.2003" style="text-decoration: none; color: #3b5998; font-weight: bold; font-size: 18px;">
+            Facebook của tôi
+        </a>
+    </div>
+</body>
+</html>

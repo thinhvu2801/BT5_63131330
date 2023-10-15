@@ -1,15 +1,72 @@
 ﻿@model BT5_63131330.Models.MailInfo
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Gửi Email";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
+<style>
+    .form-horizontal {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .form-horizontal h4 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .control-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 40px;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-back {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+        .btn-back:hover {
+            background-color: #218838;
+        }
+</style>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>MAILINFO</h4>
+        <h4>GỬI EMAIL</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -61,7 +118,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <form action="/Home/Default" method="get">
+        <button type="submit" class="btn btn-back">Quay lại Homepage</button>
+    </form>
 </div>
-
-
